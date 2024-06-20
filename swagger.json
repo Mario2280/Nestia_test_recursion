@@ -1,0 +1,457 @@
+{
+  "openapi": "3.1.0",
+  "servers": [
+    {
+      "url": "http://localhost:3456",
+      "description": "Local Server"
+    }
+  ],
+  "info": {
+    "version": "0.0.1",
+    "title": "recursion-test",
+    "description": "",
+    "license": {
+      "name": "UNLICENSED"
+    }
+  },
+  "paths": {
+    "/": {
+      "post": {
+        "tags": [],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PaymentPaginationType"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PaymentPaginationType": {
+        "type": "object",
+        "properties": {
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "default": 10
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0,
+            "default": 0
+          },
+          "sort": {
+            "oneOf": [
+              {
+                "const": "asc",
+                "default": "asc"
+              },
+              {
+                "const": "desc",
+                "default": "asc"
+              }
+            ]
+          },
+          "where": {
+            "$ref": "#/components/schemas/Prisma.PaymentWhereInput"
+          }
+        },
+        "required": [
+          "limit",
+          "offset",
+          "sort",
+          "where"
+        ]
+      },
+      "Prisma.PaymentWhereInput": {
+        "type": "object",
+        "properties": {
+          "AND": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Prisma.PaymentWhereInput"
+                }
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.PaymentWhereInput"
+              }
+            ]
+          },
+          "OR": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Prisma.PaymentWhereInput"
+            }
+          },
+          "NOT": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Prisma.PaymentWhereInput"
+                }
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.PaymentWhereInput"
+              }
+            ]
+          },
+          "telegramID": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.StringFilterPayment"
+              }
+            ]
+          },
+          "card_number": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.StringFilterPayment"
+              }
+            ]
+          },
+          "shop_address": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.StringFilterPayment"
+              }
+            ]
+          }
+        },
+        "description": "Deep Input Types"
+      },
+      "Prisma.StringFilterPayment": {
+        "type": "object",
+        "properties": {
+          "equals": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "in": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString.o1"
+              }
+            ]
+          },
+          "notIn": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString.o1"
+              }
+            ]
+          },
+          "lt": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "lte": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "gt": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "gte": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "contains": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "startsWith": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "endsWith": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "mode": {
+            "oneOf": [
+              {
+                "const": "default"
+              },
+              {
+                "const": "insensitive"
+              }
+            ]
+          },
+          "not": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.NestedStringFilterPayment"
+              }
+            ]
+          }
+        }
+      },
+      "Prisma.FieldRefPaymentString": {
+        "type": "object",
+        "properties": {
+          "modelName": {
+            "const": "Payment"
+          },
+          "name": {
+            "type": "string"
+          },
+          "typeName": {
+            "const": "String"
+          },
+          "isList": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "modelName",
+          "name",
+          "typeName",
+          "isList"
+        ],
+        "description": "A reference to a specific field of a specific model"
+      },
+      "Prisma.FieldRefPaymentString.o1": {
+        "type": "object",
+        "properties": {
+          "modelName": {
+            "const": "Payment"
+          },
+          "name": {
+            "type": "string"
+          },
+          "typeName": {
+            "const": "String[]"
+          },
+          "isList": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "modelName",
+          "name",
+          "typeName",
+          "isList"
+        ],
+        "description": "A reference to a specific field of a specific model"
+      },
+      "Prisma.NestedStringFilterPayment": {
+        "type": "object",
+        "properties": {
+          "equals": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "in": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString.o1"
+              }
+            ]
+          },
+          "notIn": {
+            "oneOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString.o1"
+              }
+            ]
+          },
+          "lt": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "lte": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "gt": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "gte": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "contains": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "startsWith": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "endsWith": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.FieldRefPaymentString"
+              }
+            ]
+          },
+          "not": {
+            "oneOf": [
+              {
+                "type": "string"
+              },
+              {
+                "$ref": "#/components/schemas/Prisma.NestedStringFilterPayment"
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "tags": [],
+  "x-samchon-emended": true
+}
